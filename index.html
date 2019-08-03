@@ -1,0 +1,89 @@
+<!--
+    Stergios Morakis
+    """
+    They make it look so easy, connecting with another human being. It's like noone told them it's the hardest thing in the world..
+    """
+-->
+<!DOCTYPE html>
+<html lang="el">
+
+<head>
+    <title>Text Game</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Text Adventure/ Quest Game using Simple Commands">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="container/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="darksection">
+            <div class="gamebox">
+                <button id="start_game"><img src="container/images/playbtn.png" alt="Play Now" style="max-width: 8em; max-height: 8em;"></button>
+                <div class="compass"></div>
+                <div class="msg">
+                    <a id="msg1"><img src="container/images/scroll.jpg" alt="Encrypted Code"></a>
+                    <p id="msg2">QW7V40K</p>
+                    <a id="msg3"><img src="container/images/scroll.jpg" alt="Encrypted Code"></a>
+                </div>
+                <div class="console">
+                    <div class="area_title">
+                        <p id="area_0">Introduction</p>
+                        <p id="area_1">Area 1: Your Dungeon</p>
+                        <p id="area_2">Area 2: The Dark Hallway</p>
+                        <p id="area_3">Area 3: The Hall</p>
+                        <p id="area_4">Area 4: The Gnome 's Dungeon</p>
+                        <p id="area_5">Area 5: The Acolyte 's Room</p>
+                        <p id="area_6">Area 6: The Dragonborn 's Tower</p>
+                        <p id="area_7">Area 7: The Great Hall</p>
+                        <p id="area_8">Area 8: The Bed Chambers</p>
+                        <p id="area_9">Ending</p>
+                    </div>
+                    <div class="text">
+                        <div id="add_text"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="user_input">
+                <form onsubmit="return false;">
+                    <input type="text" id="command_line" autocomplete="off" />
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="msgmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content message-modal">
+                <div class="modal-header message-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">You found a message!</h4>
+                </div>
+                <div class="modal-body message-image">
+                    <img src='' id="quest_image" style="width: 400px; height: 264px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js" crossorigin="anonymous"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#start_game").click(function() {
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src = "./container/scripts/game-flow.js";
+            document.getElementsByTagName("head")[0].appendChild(script);
+            return false;
+        });
+        $("#msg1").on("click", function() {
+            $('#quest_image').attr('src', 'container/images/test1.png');
+            $('#msgmodal').modal('show');
+        });
+        $("#msg3").on("click", function() {
+            $('#quest_image').attr('src', 'container/images/test2.png');
+            $('#msgmodal').modal('show');
+        });
+    });
+</script>
